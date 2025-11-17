@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eshan Jayawardana — Full stack Software engineer</title>
+  <meta name="description" content="Eshan Jayawardana — Full stack Software engineer. Portfolio showcasing projects, skills, and CV." />
+  <meta property="og:title" content="Eshan Jayawardana — Full stack Software engineer" />
+  <meta property="og:description" content="Portfolio showcasing projects, skills, and CV." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* CSS variables and base styles */
+    :root{
+      --bg:#071430; /* deep navy */
+      --surface:#0f2a49;
+      --text:#ffffff;
+      --muted:#b6c3d6;
+      --accent:#3dd7c9;
+      --glass:rgba(255,255,255,0.04);
+      --radius:12px;
+    }
+    [data-theme="light"]{
+      --bg:#f7fafc;
+      --surface:#ffffff;
+      --text:#071430;
+      --muted:#475569;
+      --glass:rgba(2,6,23,0.03);
+      --accent:#0f6f66;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--bg) 0%, #031126 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-text-size-adjust:100%;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Layout helpers */
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header.site-header{position:fixed;left:0;right:0;top:0;z-index:50;background:transparent;backdrop-filter:blur(6px);transition:background .25s ease,box-shadow .25s ease}
+    header.site-header.scrolled{background:linear-gradient(180deg, rgba(7,20,48,0.6), rgba(7,20,48,0.8));box-shadow:0 6px 24px rgba(2,6,23,0.5)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;background:var(--glass);padding:6px}
+    .brand h1{font-size:16px;margin:0;font-weight:600}
+    nav a{margin-left:18px;font-weight:500;color:var(--muted)}
+    .cta{display:inline-flex;gap:10px;align-items:center}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:600;border:1px solid transparent;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#2ec2b2);color:#042124}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+
+    /* Hero */
+    .hero{min-height:78vh;display:flex;align-items:center;padding:100px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 340px;gap:36px;align-items:center}
+    .hero-title{font-size:40px;line-height:1.02;margin:0 0 10px;font-weight:700}
+    .tagline{color:var(--muted);margin-bottom:18px}
+    .hero-desc{max-width:60ch;color:var(--muted);margin-bottom:20px}
+    .hero-portrait{display:flex;flex-direction:column;align-items:center;gap:14px}
+
+    /* avatar */
+    .avatar{width:220px;height:220px;border-radius:999px;background:linear-gradient(135deg,var(--surface),rgba(255,255,255,0.02));display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px solid rgba(255,255,255,0.04)}
+    .avatar svg{width:100%;height:100%;object-fit:cover}
+
+    /* Info strip */
+    .info-strip{display:flex;gap:18px;padding:18px;background:var(--surface);border-radius:14px;margin:22px 0}
+    .info-item{font-weight:600;color:var(--muted)}
+
+    /* Projects grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .18s cubic-bezier(.2,.9,.2,1),box-shadow .18s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 12px 30px rgba(2,6,23,0.6);border-color:var(--accent)}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .tech{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .chip{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);font-family:JetBrains Mono, monospace}
+
+    /* Skills */
+    .skills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+    /* Footer */
+    footer.site-footer{padding:40px 0;margin-top:44px;border-top:1px solid rgba(255,255,255,0.03)}
+    .socials{display:flex;gap:12px;align-items:center}
+    .muted{color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr;}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .avatar{width:180px;height:180px}
+    }
+    @media (max-width:600px){
+      .projects-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .mobile-nav-toggle{display:inline-flex}
+      .container{padding:18px}
+      .hero-title{font-size:32px}
+    }
+
+    /* Accessibility: reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none!important;animation:none!important}
+    }
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:120}
+    .modal{max-width:900px;width:calc(100% - 36px);background:var(--surface);padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 24px 60px rgba(2,6,23,0.6)}
+    .modal.show{display:block}
+    .modal-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .modal img{border-radius:8px}
+
+    /* small utilities */
+    .muted-small{color:var(--muted);font-size:13px}
+    .ks{font-family:JetBrains Mono, monospace;font-size:13px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- Temporary monogram SVG (EJ) -->
+          <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="E J logo">
+            <rect width="48" height="48" rx="10" fill="url(#g)"/>
+            <defs>
+              <linearGradient id="g" x1="0" x2="1">
+                <stop offset="0" stop-color="#0f2a49"/>
+                <stop offset="1" stop-color="#071430"/>
+              </linearGradient>
+            </defs>
+            <g fill="white" transform="translate(8,10)">
+              <text x="0" y="22" font-family="Inter, sans-serif" font-size="22" font-weight="700">EJ</text>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h1>Eshan Jayawardana</h1>
+          <div class="muted-small">Full stack Software engineer</div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="cta">
+          <a class="btn btn-ghost" href="projects.html">Projects</a>
+          <a class="btn btn-primary" href="cv.html">Download CV</a>
+        </div>
+        <!-- <button id="themeToggle" class="btn btn-ghost" aria-pressed="false" title="Toggle theme">🌓 <span class="sr-only">Toggle theme</span></button> -->
+        <button class="btn btn-ghost mobile-nav-toggle" aria-expanded="false" aria-controls="mobileMenu" style="display:none">☰</button>
+      </div>
+    </div>
+
+    <!-- mobile menu (hidden by default) -->
+    <div id="mobileMenu" style="display:none;padding:12px;background:var(--surface);border-top:1px solid rgba(255,255,255,0.02)">
+      <div class="container" style="display:flex;flex-direction:column;gap:10px">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-grid">
+        <div>
+          <p class="muted-small">Hello, I'm</p>
+          <h2 class="hero-title">Eshan Jayawardana</h2>
+          <div class="tagline">Full stack Software engineer — building clean, performant web experiences.</div>
+          <p class="hero-desc">I craft reliable and elegant web applications focused on user-first design and maintainable architecture. Currently exploring design-driven engineering and scalable frontend patterns.</p>
+          <div style="display:flex;gap:12px;align-items:center">
+            <a class="btn btn-primary" href="projects.html">View projects</a>
+            <a class="btn btn-ghost" href="cv.html">Download CV</a>
+          </div>
+
+          <div class="info-strip" style="margin-top:26px">
+            <div class="info-item">3+ Projects</div>
+            <div class="info-item">Open to internships</div>
+            <div class="info-item">GitHub · LinkedIn</div>
+          </div>
+
+          <div style="margin-top:18px">
+            <div class="muted-small">Skills</div>
+            <div class="skills">
+              <span class="chip">JavaScript</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">React</span>
+              <span class="chip">Tailwind</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Postgres</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE (UPDATED HEADSHOT) -->
+        <aside class="hero-portrait">
+          <div class="avatar" role="img" aria-label="Eshan Jayawardana headshot">
+            <img 
+              src="./assets/images/dp.png"
+              alt="Eshan Jayawardana headshot"
+              style="width:100%;height:100%;object-fit:cover;"
+            />
+          </div>
+
+          <div style="text-align:center">
+            <div style="font-weight:600">Eshan Jayawardana</div>
+            <div class="muted-small">Full stack Software engineer</div>
+            <div style="margin-top:12px" class="socials">
+              <a href="https://github.com/eshanjay">GitHub</a>
+              <a href="https://linkedin.com/in/eshanjay">LinkedIn</a>
+              <a href="https://facebook.com/eshanjay">Facebook</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container">
+      <h3 style="margin-top:0">Featured Projects</h3>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Project 1 -->
+        <article class="card" tabindex="0" data-project="1" aria-labelledby="p1-title" role="button">
+          <h3 id="p1-title">Devfolio UI</h3>
+          <p>Responsive portfolio generator with live editing and theme system.</p>
+          <div class="tech">
+            <span class="chip">HTML</span>
+            <span class="chip">Tailwind</span>
+            <span class="chip">Node</span>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card" tabindex="0" data-project="2" aria-labelledby="p2-title" role="button">
+          <h3 id="p2-title">TaskFlow</h3>
+          <p>Kanban-style productivity app with offline support and realtime sync.</p>
+          <div class="tech">
+            <span class="chip">React</span>
+            <span class="chip">WebSocket</span>
+            <span class="chip">IndexedDB</span>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card" tabindex="0" data-project="3" aria-labelledby="p3-title" role="button">
+          <h3 id="p3-title">QuizCraft</h3>
+          <p>Interactive quiz platform with custom analytics dashboard.</p>
+          <div class="tech">
+            <span class="chip">React</span>
+            <span class="chip">D3</span>
+            <span class="chip">Express</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Modal for project details -->
+    <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div>
+            <h3 id="modalTitle">Project Title</h3>
+            <div id="modalDesc" class="muted-small">Short summary and quick links.</div>
+          </div>
+          <div>
+            <button id="modalClose" class="btn btn-ghost" aria-label="Close project details">✕</button>
+          </div>
+        </div>
+        <div class="modal-grid">
+          <div>
+            <p id="modalLongDesc">Detailed description goes here — features, responsibilities, challenges, and learning outcomes. This modal is keyboard accessible and respects reduced motion preferences.</p>
+            <div style="margin-top:12px">
+              <div class="muted-small">Tech</div>
+              <div class="tech" id="modalTech"></div>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:10px">
+              <a id="modalGit" class="btn btn-ghost ks" href="#" target="_blank" rel="noopener">View on GitHub</a>
+              <a id="modalDemo" class="btn btn-primary ks" href="#" target="_blank" rel="noopener">Live demo</a>
+            </div>
+          </div>
+          <aside>
+            <div style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px">
+              <div class="muted-small">Quick facts</div>
+              <ul style="margin:8px 0 0 18px">
+                <li class="muted-small">Role: Frontend / Fullstack</li>
+                <li class="muted-small">Year: 2024</li>
+                <li class="muted-small">Status: Prototype</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <section class="container">
+      <h3>About (short)</h3>
+      <p class="muted-small">Hi — I’m <strong>Eshan Jayawardana</strong>, a Full stack Software Engineer studying Computer Science. I build scalable web apps with a strong focus on frontend UX and clean architecture. Skilled in JavaScript, Node.js, React, and modern web tooling.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-weight:600">Eshan Jayawardana</div>
+        <div class="muted-small">Full stack Software engineer</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+        <div class="socials">
+          <a href="https://github.com/eshanjay" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/eshanjay" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://facebook.com/eshanjay" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <div class="muted-small">Privacy: This site does not collect personal data on the MVP.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    /*(function(){
+      const root=document.documentElement;
+      const btn=document.getElementById('themeToggle');
+      const stored=localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if(stored==='light') root.setAttribute('data-theme','light');
+      else if(stored==='dark') root.removeAttribute('data-theme');
+      else if(!prefersDark) root.setAttribute('data-theme','light');
+
+      btn.addEventListener('click',()=>{
+        const current = root.getAttribute('data-theme');
+        if(current==='light'){
+          root.removeAttribute('data-theme');
+          localStorage.setItem('theme','dark');
+          btn.setAttribute('aria-pressed','true');
+        } else {
+          root.setAttribute('data-theme','light');
+          localStorage.setItem('theme','light');
+          btn.setAttribute('aria-pressed','false');
+        }
+      });
+    })();*/
+
+    // Header scroll behaviour
+    (function(){
+      const header=document.getElementById('siteHeader');
+      const onScroll=()=>{
+        if(window.scrollY>24) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+      };
+      window.addEventListener('scroll',onScroll,{passive:true});
+      onScroll();
+    })();
+
+    // Mobile nav toggle
+    (function(){
+      const toggle = document.querySelector('.mobile-nav-toggle');
+      const menu = document.getElementById('mobileMenu');
+      if(!toggle) return;
+      toggle.addEventListener('click',()=>{
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        menu.style.display = expanded ? 'none' : 'block';
+      });
+    })();
+
+    // Projects modal logic with accessibility
+    (function(){
+      const grid=document.getElementById('projectsGrid');
+      const backdrop=document.getElementById('modalBackdrop');
+      const modalClose=document.getElementById('modalClose');
+      const modalTitle=document.getElementById('modalTitle');
+      const modalDesc=document.getElementById('modalLongDesc');
+      const modalTech=document.getElementById('modalTech');
+      const modalGit=document.getElementById('modalGit');
+      const modalDemo=document.getElementById('modalDemo');
+      let lastFocused=null;
+
+      const projects=[
+        {id:1,title:'Devfolio UI',desc:'A responsive portfolio generator with live editing and theme system.',tech:['HTML','Tailwind','Node'],github:'#',demo:'#'},
+        {id:2,title:'TaskFlow',desc:'Kanban-style productivity app with offline support and real-time sync.',tech:['React','WebSocket','IndexedDB'],github:'#',demo:'#'},
+        {id:3,title:'QuizCraft',desc:'Interactive quiz platform with custom analytics dashboard.',tech:['React','D3','Express'],github:'#',demo:'#'}
+      ];
+
+      function openModal(p){
+        lastFocused = document.activeElement;
+        modalTitle.textContent=p.title;
+        modalDesc.textContent=p.desc;
+        modalTech.innerHTML = '';
+        p.tech.forEach(t=>{
+          const span = document.createElement('span');
+          span.className='chip'; span.textContent=t; modalTech.appendChild(span);
+        });
+        modalGit.href=p.github; modalDemo.href=p.demo;
+        backdrop.style.display='flex'; backdrop.setAttribute('aria-hidden','false');
+        // trap focus
+        const focusable = backdrop.querySelector('button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])');
+        if(focusable) focusable.focus();
+        document.addEventListener('keydown',onKey);
+      }
+      function closeModal(){
+        backdrop.style.display='none'; backdrop.setAttribute('aria-hidden','true');
+        document.removeEventListener('keydown',onKey);
+        if(lastFocused) lastFocused.focus();
+      }
+      function onKey(e){
+        if(e.key==='Escape') closeModal();
+        // simple trap: keep focus inside modal if open
+        if(e.key==='Tab' && backdrop.style.display==='flex'){
+          const focusables = Array.from(backdrop.querySelectorAll('button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])')).filter(el=>!el.hasAttribute('disabled'));
+          if(focusables.length===0) { e.preventDefault(); return; }
+          const first = focusables[0], last = focusables[focusables.length-1];
+          if(e.shiftKey && document.activeElement===first){ last.focus(); e.preventDefault(); }
+          else if(!e.shiftKey && document.activeElement===last){ first.focus(); e.preventDefault(); }
+        }
+      }
+
+      grid.addEventListener('click', (event)=>{
+        const card = event.target.closest('.card');
+        if(!card) return;
+        const id = Number(card.getAttribute('data-project'));
+        const p = projects.find(x=>x.id===id);
+        if(p) openModal(p);
+      });
+
+      grid.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter' || e.key===' ') {
+          const card = e.target.closest('.card'); if(!card) return;
+          const id = Number(card.getAttribute('data-project'));
+          const p = projects.find(x=>x.id===id); if(p) openModal(p);
+        }
+      });
+
+      modalClose.addEventListener('click',closeModal);
+      backdrop.addEventListener('click',(e)=>{ if(e.target===backdrop) closeModal(); });
+    })();
+  </script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Person","name":"Eshan Jayawardana","jobTitle":"Full stack Software engineer","url":"https://your-site.example.com","sameAs":["https://github.com/eshanjay","https://linkedin.com/in/eshanjay","https://facebook.com/eshanjay"]}
+  </script>
+</body>
+</html>

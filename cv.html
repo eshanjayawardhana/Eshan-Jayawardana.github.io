@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV — Eshan Jayawardana</title>
+  <meta name="description" content="Curriculum Vitae — Eshan Jayawardana, Full stack Software engineer. Downloadable resume and printable CV." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#071430;--surface:#0f2a49;--text:#fff;--muted:#b6c3d6;--accent:#3dd7c9}
+    [data-theme="light"]{--bg:#f7fafc;--surface:#fff;--text:#071430;--muted:#475569;--accent:#0f6f66}
+    body{margin:0;font-family:Inter;color:var(--text);background:linear-gradient(180deg,var(--bg),#031126);-webkit-font-smoothing:antialiased}
+    .container{max-width:900px;margin:0 auto;padding:28px}
+    header{position:fixed;top:0;left:0;right:0;backdrop-filter:blur(6px);z-index:50;padding:12px 0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    nav a{margin-left:12px;color:var(--muted)}
+    main{padding-top:100px}
+    .cv-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .row{display:flex;gap:20px}
+    .col{flex:1}
+    h1{margin:0;font-size:26px}
+    .muted-small{color:var(--muted)}
+    .section{margin-top:18px}
+    .skills{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-family:JetBrains Mono;color:var(--muted)}
+
+    /* Print styles */
+    @media print{
+      body{background:transparent;color:#000}
+      .container{max-width:100%;padding:0}
+      header, .btn, footer{display:none}
+      .cv-card{border:none;background:transparent;padding:0}
+    }
+
+    footer{padding:40px 0;margin-top:34px;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+    @media (max-width:800px){.row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-inner">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="url(#g)"/><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#0f2a49"/><stop offset="1" stop-color="#071430"/></linearGradient></defs><text x="11" y="30" font-size="20" fill="white" font-family="Inter" font-weight="700">EJ</text></svg>
+        <div>
+          <div style="font-weight:600">Eshan Jayawardana</div>
+          <div class="muted-small">Full stack Software engineer</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html" aria-current="page">CV</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px; margin-top:90px">
+      <div>
+        <h1>Eshan Jayawardana</h1>
+        <div class="muted-small">Full stack Software engineer</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="btn" href="resume.pdf" download="Eshan-Jayawardana-Resume.pdf" style="padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#2ec2b2);color:#042124;font-weight:600">Download PDF</a>
+        <!-- <button id="printBtn" class="btn" style="padding:10px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)">Print</button> -->
+      </div>
+    </div>
+
+    <article class="cv-card" id="cvCard">
+      <div class="row">
+        <div class="col">
+          <h2 style="margin-top:0">Profile</h2>
+          <p class="muted-small">Hi — I’m <strong>Eshan Jayawardana</strong>, a Full stack Software Engineer with experience building responsive web applications, APIs, and developer tools. I focus on clean architecture, performance, and user-centric interfaces.</p>
+
+          <div class="section">
+            <h3 style="margin:0">Experience</h3>
+            <div style="margin-top:10px">
+              <div style="font-weight:600">Frontend Engineer Intern — Company Name</div>
+              <div class="muted-small">Jun 2024 — Aug 2024</div>
+              <ul style="margin-top:6px;color:var(--muted)">
+                <li>Built modular UI components and improved app performance by 22%.</li>
+                <li>Collaborated on API integration and End-to-End testing.</li>
+              </ul>
+            </div>
+
+            <div style="margin-top:12px">
+              <div style="font-weight:600">Freelance Web Developer</div>
+              <div class="muted-small">2023 — Present</div>
+              <ul style="margin-top:6px;color:var(--muted)">
+                <li>Delivered responsive marketing sites and small web apps for clients.</li>
+                <li>Implemented CI/CD pipelines and Docker-based deployments.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3 style="margin:0">Education</h3>
+            <div style="margin-top:8px;color:var(--muted)">B.Sc. in Computer Science — University Name (3rd Year)</div>
+          </div>
+
+          <div class="section">
+            <h3 style="margin:0">Projects (selected)</h3>
+            <ul style="margin-top:8px;color:var(--muted)">
+              <li><strong>Devfolio UI</strong> — Responsive portfolio generator with live editing and theme system.</li>
+              <li><strong>TaskFlow</strong> — Kanban app with offline support & real-time sync.</li>
+              <li><strong>QuizCraft</strong> — Quiz platform with analytics dashboard.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <aside style="width:280px">
+          <div style="background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
+            <div class="muted-small">Contact</div>
+            <div style="margin-top:8px;color:var(--muted)">email@example.com</div>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <a href="https://github.com/eshanjay" target="_blank">GitHub</a>
+              <a href="https://linkedin.com/in/eshanjay" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
+            <div class="muted-small">Skills</div>
+            <div style="margin-top:8px" class="skills">
+              <span class="chip">JavaScript</span>
+              <span class="chip">React</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">Tailwind</span>
+              <span class="chip">Docker</span>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;background:rgba(255,255,255,0.02);padding:14px;border-radius:10px">
+            <div class="muted-small">Languages</div>
+            <div style="margin-top:8px;color:var(--muted)">English (Fluent), Sinhala (Native)</div>
+          </div>
+
+        </aside>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-weight:600">Eshan Jayawardana</div>
+        <div class="muted-small">Full stack Software engineer</div>
+      </div>
+      <div style="text-align:right">
+        <div class="muted-small">Privacy: This site does not collect personal data on the MVP.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    (function(){
+      const root=document.documentElement; const btn=document.getElementById('themeToggle');
+      const stored=localStorage.getItem('theme'); const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if(stored==='light') root.setAttribute('data-theme','light'); else if(stored==='dark') root.removeAttribute('data-theme'); else if(!prefersDark) root.setAttribute('data-theme','light');
+      if(btn){ btn.addEventListener('click',()=>{ const current = root.getAttribute('data-theme'); if(current==='light'){ root.removeAttribute('data-theme'); localStorage.setItem('theme','dark'); } else { root.setAttribute('data-theme','light'); localStorage.setItem('theme','light'); } }); }
+    })();
+
+    // Print button
+    document.getElementById('printBtn').addEventListener('click',function(){ window.print(); });
+  </script>
+
+</body>
+</html>
